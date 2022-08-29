@@ -1,3 +1,5 @@
+import React from "react";
+
 export default function Note({ id, title, body, createdAt }) {
   return (
     <div
@@ -8,7 +10,7 @@ export default function Note({ id, title, body, createdAt }) {
         {title}
       </h2>
       <p className="text-sm font-normal text-corn-600">{createdAt}</p>
-      <p>{body}</p>
+      <p>{body.split(/\n/).map((line, index) => <React.Fragment key={index}>{line}<br/></React.Fragment>)}</p>
     </div>
   );
 }

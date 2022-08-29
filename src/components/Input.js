@@ -1,4 +1,4 @@
-export default function Input({ id, label, type, placeholder }) {
+export default function Input({ id, label, type, placeholder, ...rest }) {
   return (
     <div>
       <label
@@ -13,6 +13,7 @@ export default function Input({ id, label, type, placeholder }) {
         id={id}
         className="bg-corn-50 text-corn-900 text-sm rounded-lg focus:ring-corn-400 focus:border-corn-400 block w-full p-2.5 hover:bg-corn-100 hover:shadow"
         placeholder={placeholder}
+        {...rest}
         required
       />
     </div>
