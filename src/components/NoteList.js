@@ -1,11 +1,10 @@
 import Note from "./Note";
-import { getInitialData, showFormattedDate } from "../utils";
+import { showFormattedDate } from "../utils";
 
-export default function NoteList() {
-  const initialData = getInitialData();
+export default function NoteList({ data }) {
   return (
     <div className="flex flex-col md:grid md:grid-cols-4 gap-2">
-      {initialData.map((item) => {
+      {data.map((item) => {
         return (
           <Note
             id={item.id}
