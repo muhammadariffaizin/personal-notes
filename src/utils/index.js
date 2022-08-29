@@ -53,4 +53,14 @@ const showFormattedDate = (date) => {
   return new Date(date).toLocaleDateString("id-ID", options);
 };
 
-export { getInitialData, showFormattedDate };
+const findItemIndex = (id, items) => {
+  for (const index in items) {
+    if (items[index].id === id) {
+      return index;
+    }
+  }
+
+  return -1;
+};
+
+export { getInitialData, showFormattedDate, findItemIndex };
