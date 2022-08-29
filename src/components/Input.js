@@ -1,4 +1,4 @@
-export default function Input({id, label, type, placeholder}) {
+export default function Input({ id, label, type, placeholder }) {
   return (
     <div>
       <label

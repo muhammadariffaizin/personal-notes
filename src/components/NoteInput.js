@@ -22,8 +22,11 @@ export default function NoteInput() {
               type="text"
               placeholder="Masukkan judul catatan di sini"
             />
-            <TextArea id="inputNoteContent" label="Isi Konten" 
-            placeholder="Masukkan isi catatan di sini" />
+            <TextArea
+              id="inputNoteContent"
+              label="Isi Konten"
+              placeholder="Masukkan isi catatan di sini"
+            />
             <button
               id="noteSubmit"
               type="submit"

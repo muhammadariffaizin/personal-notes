@@ -5,7 +5,7 @@ export default function NoteSearch() {
     <section id="search_section" className="container">
       <div className="flex flex-col bg-white rounded-lg border border-corn-200 relative overflow-hidden p-4">
         <h2 className="mb-3 text-base font-semibold text-corn-900 md:text-xl">
-          <BiFilterAlt className="inline text-2xl mr-2"/>
+          <BiFilterAlt className="inline text-2xl mr-2" />
           Filter Catatan
         </h2>
         <p className="text-sm font-normal text-corn-600">
