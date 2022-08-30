@@ -2,11 +2,13 @@ import React from "react";
 import { MdDeleteOutline, MdOutlineArchive } from "react-icons/md";
 
 export default function Note(props) {
-  const onDeleteEvent = () => {
+  const onDeleteEvent = (event) => {
+    event.stopPropagation();
     props.deleteNote(props.id);
   };
 
-  const onArchiveEvent = () => {
+  const onArchiveEvent = (event) => {
+    event.stopPropagation();
     props.archiveNote(props.id);
   };
 
@@ -42,7 +44,7 @@ export default function Note(props) {
           className="flex justify-center text-sm text-corn-800 bg-corn-200 w-full p-2 hover:bg-corn-300"
         >
           <MdOutlineArchive className="text-xl mr-1" />
-          Arsipkan
+          {props.archived === true ? "Pindahkan" : "Arsipkan"}
         </button>
       </div>
     </div>

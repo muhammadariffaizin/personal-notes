@@ -11,7 +11,6 @@ class App extends React.Component {
 
     this.state = {
       notes: getInitialData(),
-      archived: [],
     };
 
     this.onAddNotesHandler = this.onAddNotesHandler.bind(this);
@@ -49,18 +48,18 @@ class App extends React.Component {
 
   onArchiveNotesHandler(id) {
     this.setState((prevState) => {
-        const notesState = prevState.notes;
-        const archivedState = prevState.archived;
-        const noteTarget = findItemIndex(id, notesState);
-  
-        if (noteTarget === -1) return;
-  
-        const movedNote = notesState.splice(noteTarget, 1)
-        console.log(notesState)
-        return { 
-            notes: notesState,
-            archived: archivedState.concat(movedNote)
-        };
+      let notesState = prevState.notes;
+      const noteTarget = findItemIndex(id, notesState);
+
+      if (noteTarget === -1) return;
+
+      if (notesState[noteTarget].archived === true) {
+        notesState[noteTarget].archived = false;
+      } else if (notesState[noteTarget].archived === false) {
+        notesState[noteTarget].archived = true;
+      }
+
+      return notesState;
     });
   }
 
@@ -77,7 +76,7 @@ class App extends React.Component {
             </h2>
           </div>
           <NoteList
-            notes={this.state.notes}
+            notes={this.state.notes.filter((item) => item.archived === false)}
             deleteNote={this.onDeleteNotesHandler}
             archiveNote={this.onArchiveNotesHandler}
           />
@@ -87,7 +86,7 @@ class App extends React.Component {
             </h2>
           </div>
           <NoteList
-            notes={this.state.archived}
+            notes={this.state.notes.filter((item) => item.archived === true)}
             deleteNote={this.onDeleteNotesHandler}
             archiveNote={this.onArchiveNotesHandler}
           />
