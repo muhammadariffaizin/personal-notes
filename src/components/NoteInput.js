@@ -19,9 +19,12 @@ class NoteInput extends React.Component {
   }
 
   onTitleChangeHandler(event) {
-    this.setState(() => {
+    this.setState((prevState) => {
+      if (event.target.value.length > 50) {
+        event.target.value = prevState.title;
+      }
       return {
-        title: event.target.value,
+        title: event.target.value.slice(0, 50),
       };
     });
   }
@@ -58,6 +61,7 @@ class NoteInput extends React.Component {
                 type="text"
                 placeholder="Masukkan judul catatan di sini"
                 value={this.state.title}
+                limitlength={50}
                 onChange={this.onTitleChangeHandler}
               />
               <TextArea
