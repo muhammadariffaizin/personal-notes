@@ -11,11 +11,16 @@ class App extends React.Component {
 
     this.state = {
       notes: getInitialData(),
+      query: "",
     };
 
     this.onAddNotesHandler = this.onAddNotesHandler.bind(this);
     this.onDeleteNotesHandler = this.onDeleteNotesHandler.bind(this);
     this.onArchiveNotesHandler = this.onArchiveNotesHandler.bind(this);
+    this.onFilterNoteHandler = this.onFilterNoteHandler.bind(this);
+
+    this.onActiveNotes = this.onActiveNotes.bind(this);
+    this.onArchivedNotes = this.onArchivedNotes.bind(this);
   }
 
   onAddNotesHandler({ title, body }) {
@@ -63,30 +68,62 @@ class App extends React.Component {
     });
   }
 
+  onFilterNoteHandler(query) {
+    this.setState(() => {
+      return {
+        query: query.target.value,
+      };
+    });
+  }
+
+  onActiveNotes() {
+    const filteredNotes = this.state.notes.filter(
+      (item) => item.archived === false
+    );
+    if (this.state.query) {
+      return filteredNotes.filter((item) =>
+        item.title.toLowerCase().includes(this.state.query.toLowerCase())
+      );
+    }
+    return filteredNotes;
+  }
+
+  onArchivedNotes() {
+    const filteredNotes = this.state.notes.filter(
+      (item) => item.archived === true
+    );
+    if (this.state.query) {
+      return filteredNotes.filter((item) =>
+        item.title.toLowerCase().includes(this.state.query.toLowerCase())
+      );
+    }
+    return filteredNotes;
+  }
+
   render() {
     return (
       <div className="App bg-corn-100">
         <Navbar />
-        <main className="max-w-4xl px-4 mx-auto flex flex-col justify-center items-center w-full min-h-screen space-y-2">
+        <main className="flex flex-col items-center justify-center w-full max-w-4xl min-h-screen px-4 mx-auto space-y-2">
           <NoteInput addNote={this.onAddNotesHandler} />
-          <NoteSearch />
-          <div className="flex flex-col p-3 sm:p-4 w-full items-center justify-center bg-white rounded-lg border border-corn-200 relative overflow-hidden">
+          <NoteSearch filterNote={this.onFilterNoteHandler} />
+          <div className="relative flex flex-col items-center justify-center w-full p-3 overflow-hidden bg-white border rounded-lg sm:p-4 border-corn-200">
             <h2 className="text-base font-semibold text-corn-900 md:text-xl">
               Catatan Aktif
             </h2>
           </div>
           <NoteList
-            notes={this.state.notes.filter((item) => item.archived === false)}
+            notes={this.onActiveNotes()}
             deleteNote={this.onDeleteNotesHandler}
             archiveNote={this.onArchiveNotesHandler}
           />
-          <div className="flex flex-col p-3 sm:p-4 w-full items-center justify-center bg-white rounded-lg border border-corn-200 relative overflow-hidden">
+          <div className="relative flex flex-col items-center justify-center w-full p-3 overflow-hidden bg-white border rounded-lg sm:p-4 border-corn-200">
             <h2 className="text-base font-semibold text-corn-900 md:text-xl">
               Arsip
             </h2>
           </div>
           <NoteList
-            notes={this.state.notes.filter((item) => item.archived === true)}
+            notes={this.onArchivedNotes()}
             deleteNote={this.onDeleteNotesHandler}
             archiveNote={this.onArchiveNotesHandler}
           />

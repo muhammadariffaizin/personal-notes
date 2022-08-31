@@ -13,8 +13,7 @@ export default function TextArea({ id, label, placeholder, ...rest }) {
         placeholder={placeholder}
         rows="4"
         {...rest}
-      >
-      </textarea>
+      ></textarea>
     </div>
   );
 }
