@@ -8,7 +8,7 @@ export default function NoteList(props) {
     );
   }
   return (
-    <div className="flex flex-col md:grid md:grid-cols-4 gap-2">
+    <div className="flex flex-col gap-2 md:grid md:grid-cols-4">
       {props.notes.map((item) => {
         return (
           <Note
@@ -18,8 +18,6 @@ export default function NoteList(props) {
             body={item.body}
             createdAt={showFormattedDate(item.createdAt)}
             archived={item.archived}
-            deleteNote={props.deleteNote}
-            archiveNote={props.archiveNote}
           />
         );
       })}

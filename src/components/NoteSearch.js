@@ -1,8 +1,8 @@
 import { BiFilterAlt, BiSearch } from "react-icons/bi";
 
-export default function NoteSearch(props) {
+const NoteSearch = (props) => {
   return (
-    <section id="search_section" className="container">
+    <section id="search_section" className="w-full">
       <div className="relative flex flex-col p-4 overflow-hidden bg-white border rounded-lg border-corn-200">
         <h2 className="mb-3 text-base font-semibold text-corn-900 md:text-xl">
           <BiFilterAlt className="inline mr-2 text-2xl" />
@@ -36,3 +36,5 @@ export default function NoteSearch(props) {
     </section>
   );
 }
+
+export default NoteSearch;

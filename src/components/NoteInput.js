@@ -44,12 +44,12 @@ class NoteInput extends React.Component {
 
   render() {
     return (
-      <section id="add_note" className="container">
-        <div className="flex flex-col items-center justify-center bg-white rounded-lg border border-corn-200 relative overflow-hidden md:flex-row">
+      <section id="add_note" className="w-full">
+        <div className="relative flex flex-col items-center justify-center overflow-hidden bg-white border rounded-lg border-corn-200 md:flex-row">
           <form id="inputNote" onSubmit={this.onSubmitEventHandler}>
-            <div className="flex flex-col justify-between p-8 leading-normal space-y-2">
+            <div className="flex flex-col justify-between p-8 space-y-2 leading-normal">
               <h2 className="mb-3 text-base font-semibold text-corn-900 md:text-xl">
-                <MdEditNote className="inline text-2xl mr-2" />
+                <MdEditNote className="inline mr-2 text-2xl" />
                 Buat Catatan
               </h2>
               <p className="mb-3 font-normal text-corn-600">
@@ -76,7 +76,7 @@ class NoteInput extends React.Component {
                 type="submit"
                 className="w-full text-white bg-corn-700 hover:bg-corn-800 focus:ring-4 focus:outline-none focus:ring-corn-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
               >
-                <BiPlus className="inline text-xl mr-2" />
+                <BiPlus className="inline mr-2 text-xl" />
                 Tambah Catatan
               </button>
             </div>

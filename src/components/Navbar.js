@@ -1,19 +1,30 @@
+import { Link } from "react-router-dom";
+import { AiOutlinePlus } from "react-icons/ai";
 import { BiQuestionMark } from "react-icons/bi";
 import { CgNotes } from "react-icons/cg";
+import { MdOutlineArchive } from "react-icons/md";
 
 export default function Navbar() {
   return (
-    <header className="relative bg-corn-100">
-      <nav className="max-w-4xl mx-auto px-4 sm:px-6">
-        <div className="flex justify-between items-center border-b-2 border-corn-100 py-6 md:justify-start md:space-x-10">
+    <header className="bg-corn-100">
+      <nav className="fixed top-0 left-0 right-0 z-10 flex flex-col items-center w-full max-w-4xl px-4 mx-auto sm:px-6 bg-corn-100">
+        <div className="flex items-center justify-between w-full py-6 border-b-2 border-corn-100">
           <div className="flex justify-start lg:w-0 lg:flex-1">
             <CgNotes className="text-3xl text-corn-800" />
-            <h1 className="text-2xl text-sans text-corn-900 font-semibold ml-2">
-              Personal Notes
+            <h1 className="ml-2 text-2xl font-semibold text-sans text-corn-900">
+              <Link to="/">Personal Notes</Link>
             </h1>
           </div>
-          <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-            <BiQuestionMark className="text-2xl text-corn-900" />
+          <div className="flex justify-end">
+            <Link to="/note/add">
+              <AiOutlinePlus className="m-2 text-2xl rounded-full text-corn-900" />
+            </Link>
+            <Link to="/archives">
+              <MdOutlineArchive className="m-2 text-2xl rounded-full text-corn-900" />
+            </Link>
+            <Link to="/">
+              <BiQuestionMark className="m-2 text-2xl rounded-full text-corn-900" />
+            </Link>
           </div>
         </div>
       </nav>

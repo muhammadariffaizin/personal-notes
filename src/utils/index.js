@@ -1,4 +1,4 @@
-const getInitialData = () => [
+let notes = [
   {
     id: 1,
     title: "Babel",
@@ -43,6 +43,50 @@ const getInitialData = () => [
   },
 ];
 
+const getNotes = () => {
+  return notes;
+};
+
+const getActiveNotes = () => {
+  return notes.filter((item) => item.archived === false);
+};
+
+const getArchivedNotes = () => {
+  return notes.filter((item) => item.archived === true);
+};
+
+const getNote = (id) => {
+  const getIndex = notes.findIndex((note) => note.id === Number(id));
+  return notes[getIndex];
+};
+
+const addNote = (note) => {
+  notes = [
+    ...notes,
+    {
+      id: +new Date(),
+      title: note.title,
+      body: note.body,
+      createdAt: new Date().toISOString(),
+      archived: false,
+    },
+  ];
+};
+
+const deleteNote = (id) => {
+  notes = notes.filter((note) => note.id !== id);
+};
+
+const archiveNote = (id) => {
+  const getIndex = notes.findIndex((note) => note.id === Number(id));
+  notes[getIndex].archived = true;
+}
+
+const unarchiveNote = (id) => {
+  const getIndex = notes.findIndex((note) => note.id === Number(id));
+  notes[getIndex].archived = false;
+}
+
 const showFormattedDate = (date) => {
   const options = {
     weekday: "long",
@@ -63,4 +107,15 @@ const findItemIndex = (id, items) => {
   return -1;
 };
 
-export { getInitialData, showFormattedDate, findItemIndex };
+export {
+  getNotes,
+  getActiveNotes,
+  getArchivedNotes,
+  getNote,
+  addNote,
+  deleteNote,
+  archiveNote,
+  unarchiveNote,
+  showFormattedDate,
+  findItemIndex,
+};
