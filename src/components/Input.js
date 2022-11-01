@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const Input = ({
   id,
   label,
@@ -36,5 +38,14 @@ const Input = ({
     </div>
   );
 };
+
+Input.propTypes = {
+  id: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
+  limitlength: PropTypes.number.isRequired,
+  value: PropTypes.string.isRequired,
+}
 
 export default Input;
