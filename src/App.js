@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar";
 import HomePage from "./pages/index";
 import AddNotePage from "./pages/AddNote";
 import DetailNotePage from "./pages/DetailNote";
-import ArchiveNotePage from "./pages/ArchiveNote";
+import ArchivedNotePage from "./pages/ArchivedNote";
 import PageNotFound from "./pages/NotFound";
 
 import { Routes, Route } from 'react-router-dom';
@@ -15,7 +15,7 @@ const App = () => {
       <main className="flex flex-col items-center w-full max-w-4xl min-h-screen px-4 pt-24 mx-auto">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/archives" element={<ArchiveNotePage />} />
+          <Route path="/archives" element={<ArchivedNotePage />} />
           <Route path="/note/add" element={<AddNotePage />} />
           <Route path="/note/:id" element={<DetailNotePage />} />
           <Route path="*" element={<PageNotFound />} />

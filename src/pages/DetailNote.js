@@ -33,13 +33,13 @@ const DetailNotePage = () => {
 
   return (
     <div className="justify-center w-full space-y-2">
-      <h1 className="my-3 text-3xl font-semibold text-corn-900 md:text-5xl">
+      <h1 className="my-3 text-3xl font-semibold break-all text-corn-900 md:text-5xl">
         {note.title}
       </h1>
       <p className="text-sm font-normal text-corn-600">
         {showFormattedDate(note.createdAt)}
       </p>
-      <p className="text-lg text-corn-800">
+      <p className="text-lg break-all text-corn-800">
         {note.body.split(/\n/).map((line, index) => (
           <React.Fragment key={index}>
             {line}
@@ -68,4 +68,3 @@ const DetailNotePage = () => {
 };
 
 export default DetailNotePage;
- 

@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import NoteList from "../components/NoteList";
 import NoteSearch from "../components/NoteSearch";
-import { getActiveNotes } from "../utils";
+import { getArchivedNotes } from "../utils";
 
-const HomePage = () => {
+const ArchiveNotePage = () => {
   const [notes, setNotes] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -16,10 +16,10 @@ const HomePage = () => {
 
   useEffect(() => {
     if (!title) {
-      setNotes(getActiveNotes());
+      setNotes(getArchivedNotes());
     } else {
       setNotes(
-        getActiveNotes().filter((note) =>
+        getArchivedNotes().filter((note) =>
           note.title.toLowerCase().includes(title.toLowerCase())
         )
       );
@@ -31,12 +31,12 @@ const HomePage = () => {
       <NoteSearch title={title} setSearchParamsHandler={setSearchParamsHandler} />
       <div className="relative flex flex-col items-center justify-center w-full p-3 overflow-hidden bg-white border rounded-lg sm:p-4 border-corn-200">
         <h2 className="text-base font-semibold text-corn-900 md:text-xl">
-          Catatan Aktif
+          Catatan Arsip
         </h2>
       </div>
       <NoteList notes={notes} />
     </div>
   );
-};
+}
 
-export default HomePage;
+export default ArchiveNotePage;

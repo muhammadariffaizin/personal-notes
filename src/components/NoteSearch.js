@@ -1,6 +1,7 @@
+import PropTypes from "prop-types";
 import { BiFilterAlt, BiSearch } from "react-icons/bi";
 
-const NoteSearch = (props) => {
+const NoteSearch = ({ title, setSearchParamsHandler }) => {
   return (
     <section id="search_section" className="w-full">
       <div className="relative flex flex-col p-4 overflow-hidden bg-white border rounded-lg border-corn-200">
@@ -28,13 +29,19 @@ const NoteSearch = (props) => {
               id="searchNoteTitle"
               className="bg-corn-50 text-corn-900 text-sm rounded-lg focus:ring-corn-500 focus:border-corn-500 block w-full px-4 py-2.5 hover:bg-corn-100"
               placeholder="Cari Catatan"
-              onChange={props.filterNote}
+              value={title}
+              onChange={(event) => setSearchParamsHandler(event.target.value)}
             />
           </div>
         </form>
       </div>
     </section>
   );
-}
+};
+
+NoteSearch.propTypes = {
+  title: PropTypes.string.isRequired,
+  setSearchParamsHandler: PropTypes.func.isRequired,
+};
 
 export default NoteSearch;
