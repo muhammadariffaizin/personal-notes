@@ -1,15 +1,15 @@
 import Note from "./Note";
 import PropTypes from "prop-types";
 
-const NoteList = (props) => {
-  if (props.notes.length === 0) {
+const NoteList = ({ notes }) => {
+  if (notes.length === 0) {
     return (
       <div className="w-full px-6 py-4 text-center">Tidak ada catatan</div>
     );
   }
   return (
     <div className="flex flex-col gap-2 md:grid md:grid-cols-4">
-      {props.notes.map((item) => {
+      {notes.map((item) => {
         return (
           <Note
             key={item.id}
