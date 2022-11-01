@@ -1,7 +1,13 @@
 import React from "react";
 import { MdDeleteOutline, MdOutlineArchive } from "react-icons/md";
 import { useNavigate, useParams } from "react-router-dom";
-import { getNote, deleteNote, archiveNote, unarchiveNote } from "../utils";
+import {
+  getNote,
+  deleteNote,
+  archiveNote,
+  unarchiveNote,
+  showFormattedDate,
+} from "../utils";
 
 const DetailNotePage = () => {
   const params = useParams();
@@ -30,7 +36,9 @@ const DetailNotePage = () => {
       <h1 className="my-3 text-3xl font-semibold text-corn-900 md:text-5xl">
         {note.title}
       </h1>
-      <p className="text-sm font-normal text-corn-600">{note.createdAt}</p>
+      <p className="text-sm font-normal text-corn-600">
+        {showFormattedDate(note.createdAt)}
+      </p>
       <p className="text-lg text-corn-800">
         {note.body.split(/\n/).map((line, index) => (
           <React.Fragment key={index}>
@@ -60,3 +68,4 @@ const DetailNotePage = () => {
 };
 
 export default DetailNotePage;
+ 

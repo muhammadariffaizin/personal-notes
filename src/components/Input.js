@@ -1,4 +1,4 @@
-export default function Input({
+const Input = ({
   id,
   label,
   type,
@@ -6,7 +6,7 @@ export default function Input({
   limitlength,
   value,
   ...rest
-}) {
+}) => {
   return (
     <div>
       <label
@@ -15,11 +15,11 @@ export default function Input({
       >
         {label}
       </label>
-      <div className="flex flex-row relative">
+      <div className="relative flex flex-row">
         <button
           id="searchSubmit"
           type="submit"
-          className="flex absolute -top-8 right-0 items-center p-3 rounded-lg text-xs"
+          className="absolute right-0 flex items-center p-3 text-xs rounded-lg -top-8"
         >
           {value.length}/{limitlength}
         </button>
@@ -35,4 +35,6 @@ export default function Input({
       </div>
     </div>
   );
-}
+};
+
+export default Input;

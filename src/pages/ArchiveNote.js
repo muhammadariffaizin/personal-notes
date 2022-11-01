@@ -1,14 +1,14 @@
 import React from "react";
 import NoteList from "../components/NoteList";
 import NoteSearch from "../components/NoteSearch";
-import { getNotes } from "../utils";
+import { getAllNotes } from "../utils";
 
 class ArchiveNotePage extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      notes: getNotes(),
+      notes: getAllNotes(),
       query: "",
     };
 

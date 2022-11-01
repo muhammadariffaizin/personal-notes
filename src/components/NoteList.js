@@ -1,7 +1,7 @@
 import Note from "./Note";
-import { showFormattedDate } from "../utils";
+import PropTypes from "prop-types";
 
-export default function NoteList(props) {
+const NoteList = (props) => {
   if (props.notes.length === 0) {
     return (
       <div className="w-full px-6 py-4 text-center">Tidak ada catatan</div>
@@ -16,11 +16,17 @@ export default function NoteList(props) {
             id={item.id}
             title={item.title}
             body={item.body}
-            createdAt={showFormattedDate(item.createdAt)}
+            createdAt={item.createdAt}
             archived={item.archived}
           />
         );
       })}
     </div>
   );
-}
+};
+
+NoteList.propTypes = {
+  notes: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
+
+export default NoteList;

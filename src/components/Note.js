@@ -1,8 +1,9 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import { showFormattedDate } from "../utils";
 
-export default function Note(props) {
-
+const Note = (props) => {
   return (
     <div
       id={props.id}
@@ -12,7 +13,9 @@ export default function Note(props) {
         <h2 className="mb-3 text-lg font-semibold break-all text-corn-900 md:text-xl">
           <Link to={"/note/" + props.id}>{props.title}</Link>
         </h2>
-        <p className="text-sm font-normal text-corn-600">{props.createdAt}</p>
+        <p className="text-sm font-normal text-corn-600">
+          {showFormattedDate(props.createdAt)}
+        </p>
         <p className="break-all line-clamp-3 text-corn-800">
           {props.body.split(/\n/).map((line, index) => (
             <React.Fragment key={index}>
@@ -24,4 +27,14 @@ export default function Note(props) {
       </div>
     </div>
   );
-}
+};
+
+Note.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  archived: PropTypes.bool.isRequired,
+  createdAt: PropTypes.string.isRequired,
+};
+
+export default Note;

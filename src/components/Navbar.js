@@ -4,7 +4,7 @@ import { BiQuestionMark } from "react-icons/bi";
 import { CgNotes } from "react-icons/cg";
 import { MdOutlineArchive } from "react-icons/md";
 
-export default function Navbar() {
+const Navbar = () => {
   return (
     <header className="bg-corn-100">
       <nav className="fixed top-0 left-0 right-0 z-10 flex flex-col items-center w-full max-w-4xl px-4 mx-auto sm:px-6 bg-corn-100">
@@ -30,4 +30,6 @@ export default function Navbar() {
       </nav>
     </header>
   );
-}
+};
+
+export default Navbar;

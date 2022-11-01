@@ -1,4 +1,4 @@
-export default function TextArea({ id, label, placeholder, ...rest }) {
+const TextArea = ({ id, label, placeholder, ...rest }) => {
   return (
     <div>
       <label
@@ -16,4 +16,6 @@ export default function TextArea({ id, label, placeholder, ...rest }) {
       ></textarea>
     </div>
   );
-}
+};
+
+export default TextArea;
