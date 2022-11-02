@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const TextArea = ({ id, label, placeholder, ...rest }) => {
+const TextArea = ({ id, label, placeholder, value, onChangeHandler }) => {
   return (
     <div>
       <label
@@ -14,7 +14,8 @@ const TextArea = ({ id, label, placeholder, ...rest }) => {
         className="bg-corn-50 text-corn-900 text-sm rounded-lg focus:ring-corn-400 focus:border-corn-400 block w-full p-2.5 hover:bg-corn-100 hover:shadow"
         placeholder={placeholder}
         rows="4"
-        {...rest}
+        value={value}
+        onChange={onChangeHandler}
       ></textarea>
     </div>
   );
@@ -24,6 +25,8 @@ TextArea.propTypes = {
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
 };
 
 export default TextArea;
