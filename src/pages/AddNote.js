@@ -39,8 +39,8 @@ const AddNotePage = () => {
               type="text"
               placeholder="Masukkan judul catatan di sini"
               value={title}
-              limitlength={50}
-              onChange={(event) => {
+              limitLength={50}
+              onChangeHandler={(event) => {
                 if (title.length <= 50) {
                   setTitle(event.target.value);
                 }

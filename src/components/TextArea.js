@@ -26,7 +26,7 @@ TextArea.propTypes = {
   label: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   value: PropTypes.string,
-  onChange: PropTypes.func,
+  onChangeHandler: PropTypes.func,
 };
 
 export default TextArea;

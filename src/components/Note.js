@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { showFormattedDate } from "../utils";
 
-const Note = ({ id, title, body, archived, createdAt }) => {
+const Note = ({ id, title, body, createdAt }) => {
   return (
     <div
       id={id}
@@ -33,7 +33,6 @@ Note.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
-  archived: PropTypes.bool.isRequired,
   createdAt: PropTypes.string.isRequired,
 };
 
