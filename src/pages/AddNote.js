@@ -25,14 +25,14 @@ const AddNotePage = () => {
 
   return (
     <section id="add_note" className="w-full">
-      <div className="relative flex flex-col items-center justify-center overflow-hidden bg-white border rounded-lg border-corn-200 md:flex-row">
+      <div className="relative flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-gray-800 border rounded-lg border-corn-200 dark:border-gray-800 md:flex-row">
         <form id="inputNote" onSubmit={onSubmitEventHandler}>
           <div className="flex flex-col justify-between p-8 space-y-2 leading-normal">
-            <h2 className="mb-3 text-base font-semibold text-corn-900 md:text-xl">
+            <h2 className="mb-3 text-base font-semibold text-corn-900 dark:text-gray-100 md:text-xl">
               <MdEditNote className="inline mr-2 text-2xl" />
               {localization.title}
             </h2>
-            <p className="mb-3 font-normal text-corn-600">
+            <p className="mb-3 font-normal text-corn-600 dark:text-gray-400">
               {localization.description}
             </p>
             <Input
@@ -58,7 +58,7 @@ const AddNotePage = () => {
             <button
               id="noteSubmit"
               type="submit"
-              className="w-full text-white bg-corn-700 hover:bg-corn-800 focus:ring-4 focus:outline-none focus:ring-corn-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+              className="w-full text-white dark:text-gray-100 bg-corn-700 dark:bg-gray-700 hover:bg-corn-800 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-corn-300 dark:focus:ring-gray-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
             >
               <BiPlus className="inline mr-2 text-xl" />
               {localization.submitBtn}

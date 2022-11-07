@@ -34,8 +34,8 @@ const ArchivedNotePage = () => {
         title={title}
         setSearchParamsHandler={setSearchParamsHandler}
       />
-      <div className="relative flex flex-col items-center justify-center w-full p-3 overflow-hidden bg-white border rounded-lg sm:p-4 border-corn-200">
-        <h2 className="text-base font-semibold text-corn-900 md:text-xl">
+      <div className="relative flex flex-col items-center justify-center w-full p-3 overflow-hidden bg-white dark:bg-gray-800 border rounded-lg sm:p-4 border-corn-200 dark:border-gray-800">
+        <h2 className="text-base font-semibold text-corn-900 dark:text-gray-100 md:text-xl">
           {localization.title}
         </h2>
       </div>

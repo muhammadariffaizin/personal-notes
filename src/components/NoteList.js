@@ -7,7 +7,7 @@ const NoteList = ({ notes }) => {
 
   if (notes.length === 0) {
     return (
-      <div className="w-full px-6 py-4 text-center">
+      <div className="w-full px-6 py-4 text-center text-corn-900 dark:text-gray-100">
         {localization.notFound}
       </div>
     );
