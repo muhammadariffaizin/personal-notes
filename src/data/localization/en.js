@@ -37,6 +37,48 @@ const enLocalization = {
       archiveBtn: "Archive",
       unarchiveBtn: "Unarchive",
     },
+    login: {
+      title: "Hi, Welcome Back",
+      description: "Nice to meet you again. Lets login to continue",
+      emailInput: {
+        title: "Email",
+        placeholder: "Enter your email here",
+      },
+      passwordInput: {
+        title: "Password",
+        placeholder: "Enter your password here",
+      },
+      submitBtn: "Login",
+      register: {
+        text: "Don't have an account?",
+        link: "Register Now"
+      }
+    },
+    register: {
+      title: "Lets Get Started",
+      description: "Register now and enjoy write your notes",
+      nameInput: {
+        title: "Name",
+        placeholder: "Enter your name here",
+      },
+      emailInput: {
+        title: "Email",
+        placeholder: "Enter your email here",
+      },
+      passwordInput: {
+        title: "Password",
+        placeholder: "Enter your password here",
+      },
+      confirmPasswordInput: {
+        title: "Confirm Password",
+        placeholder: "Enter your password confirmation here",
+      },
+      submitBtn: "Register",
+      login: {
+        text: "Already have an account?",
+        link: "Login Now"
+      }
+    },
   },
 };
 

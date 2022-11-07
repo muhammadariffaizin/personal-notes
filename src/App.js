@@ -3,6 +3,7 @@ import React from "react";
 import Navbar from "./components/Navbar";
 
 import HomePage from "./pages/index";
+import Login from "./pages/Login";
 import AddNotePage from "./pages/AddNote";
 import DetailNotePage from "./pages/DetailNote";
 import ArchivedNotePage from "./pages/ArchivedNote";
@@ -12,12 +13,23 @@ import { Routes, Route } from "react-router-dom";
 
 import LanguageProvider from "./providers/LocaleProvider";
 import ColorSchemeProvider from "./providers/ColorSchemeProvider";
+import Register from "./pages/Register";
 
 const routeItems = [
   {
     key: "home",
     path: "/",
     component: HomePage,
+  },
+  {
+    key: "login",
+    path: "/login",
+    component: Login,
+  },
+  {
+    key: "register",
+    path: "/register",
+    component: Register,
   },
   {
     key: "archives",
