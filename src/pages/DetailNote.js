@@ -9,10 +9,12 @@ import {
   unarchiveNote,
   showFormattedDate,
 } from "../utils";
+import useLocalization from "../hooks/useLocalization";
 
 const DetailNotePage = () => {
   const params = useParams();
   const navigate = useNavigate();
+  const localization = useLocalization().pages.detailNote;
 
   const note = getNote(params.id);
 
@@ -69,14 +71,16 @@ const DetailNotePage = () => {
           className="flex justify-center px-3 py-2 text-sm text-red-800 rounded-md bg-red-50 hover:bg-red-100"
         >
           <MdDeleteOutline className="mr-1 text-xl" />
-          Hapus
+          {localization.deleteBtn}
         </button>
         <button
           onClick={onArchiveEvent}
           className="flex justify-center px-3 py-2 text-sm rounded-md text-corn-800 bg-corn-200 hover:bg-corn-300"
         >
           <MdOutlineArchive className="mr-1 text-xl" />
-          {note.archived === true ? "Batal Arsipkan" : "Arsipkan"}
+          {note.archived === true
+            ? localization.unarchiveBtn
+            : localization.archiveBtn}
         </button>
       </div>
     </div>

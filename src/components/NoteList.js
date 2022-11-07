@@ -1,10 +1,15 @@
 import Note from "./Note";
 import PropTypes from "prop-types";
+import useLocalization from "../hooks/useLocalization";
 
 const NoteList = ({ notes }) => {
+  const localization = useLocalization().components.noteList;
+
   if (notes.length === 0) {
     return (
-      <div className="w-full px-6 py-4 text-center">Tidak ada catatan</div>
+      <div className="w-full px-6 py-4 text-center">
+        {localization.notFound}
+      </div>
     );
   }
   return (

@@ -5,10 +5,12 @@ import TextArea from "../components/TextArea";
 import { BiPlus } from "react-icons/bi";
 import { MdEditNote } from "react-icons/md";
 import { addNote } from "../utils";
+import useLocalization from "../hooks/useLocalization";
 
 const AddNotePage = () => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const localization = useLocalization().pages.addNote;
 
   const navigate = useNavigate();
 
@@ -28,16 +30,16 @@ const AddNotePage = () => {
           <div className="flex flex-col justify-between p-8 space-y-2 leading-normal">
             <h2 className="mb-3 text-base font-semibold text-corn-900 md:text-xl">
               <MdEditNote className="inline mr-2 text-2xl" />
-              Buat Catatan
+              {localization.title}
             </h2>
             <p className="mb-3 font-normal text-corn-600">
-              Tambahkan catatan kamu disini, isi dengan lengkap ya
+              {localization.description}
             </p>
             <Input
               id="inputNoteTitle"
-              label="Judul"
+              label={localization.inputTitle.title}
               type="text"
-              placeholder="Masukkan judul catatan di sini"
+              placeholder={localization.inputTitle.placeholder}
               value={title}
               limitLength={50}
               onChangeHandler={(event) => {
@@ -48,8 +50,8 @@ const AddNotePage = () => {
             />
             <TextArea
               id="inputNoteBody"
-              label="Isi Konten"
-              placeholder="Masukkan isi catatan di sini"
+              label={localization.inputContent.title}
+              placeholder={localization.inputContent.placeholder}
               value={body}
               onChangeHandler={(event) => setBody(event.target.value)}
             />
@@ -59,7 +61,7 @@ const AddNotePage = () => {
               className="w-full text-white bg-corn-700 hover:bg-corn-800 focus:ring-4 focus:outline-none focus:ring-corn-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
             >
               <BiPlus className="inline mr-2 text-xl" />
-              Tambah Catatan
+              {localization.submitBtn}
             </button>
           </div>
         </form>

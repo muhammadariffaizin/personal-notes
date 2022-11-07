@@ -3,8 +3,13 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { BiQuestionMark } from "react-icons/bi";
 import { CgNotes } from "react-icons/cg";
 import { MdOutlineArchive } from "react-icons/md";
+import useLanguage from "../hooks/useLanguage";
+import useLocalization from "../hooks/useLocalization";
 
 const Navbar = () => {
+  const { language, toggleLanguage } = useLanguage();
+  const localization = useLocalization().components.navbar;
+
   return (
     <header className="bg-corn-100">
       <nav className="fixed top-0 left-0 right-0 z-10 flex flex-col items-center w-full max-w-4xl px-4 mx-auto sm:px-6 bg-corn-100">
@@ -12,7 +17,7 @@ const Navbar = () => {
           <div className="flex justify-start lg:w-0 lg:flex-1">
             <CgNotes className="text-3xl text-corn-800" />
             <h1 className="ml-2 text-2xl font-semibold text-sans text-corn-900">
-              <Link to="/">Personal Notes</Link>
+              <Link to="/">{localization.appName}</Link>
             </h1>
           </div>
           <div className="flex justify-end">
@@ -25,6 +30,9 @@ const Navbar = () => {
             <Link to="/">
               <BiQuestionMark className="m-2 text-2xl rounded-full text-corn-900" />
             </Link>
+            <button onClick={toggleLanguage}>
+              {language === "id" ? "id" : "en"}
+            </button>
           </div>
         </div>
       </nav>
