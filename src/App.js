@@ -13,6 +13,34 @@ import { Routes, Route } from "react-router-dom";
 import LanguageProvider from "./providers/LocaleProvider";
 import ColorSchemeProvider from "./providers/ColorSchemeProvider";
 
+const routeItems = [
+  {
+    key: "home",
+    path: "/",
+    component: HomePage,
+  },
+  {
+    key: "archives",
+    path: "/archives",
+    component: ArchivedNotePage,
+  },
+  {
+    key: "add-note",
+    path: "/note/add",
+    component: AddNotePage,
+  },
+  {
+    key: "detail-note",
+    path: "/note/:id",
+    component: DetailNotePage,
+  },
+  {
+    key: "not-found",
+    path: "*",
+    component: PageNotFound,
+  },
+];
+
 const App = () => {
   return (
     <ColorSchemeProvider>
@@ -21,11 +49,15 @@ const App = () => {
           <Navbar />
           <main className="flex flex-col items-center w-full max-w-4xl min-h-screen px-4 pt-24 mx-auto">
             <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/archives" element={<ArchivedNotePage />} />
-              <Route path="/note/add" element={<AddNotePage />} />
-              <Route path="/note/:id" element={<DetailNotePage />} />
-              <Route path="*" element={<PageNotFound />} />
+              {routeItems.map((routeItem) => {
+                return (
+                  <Route
+                    key={routeItem.key}
+                    path={routeItem.path}
+                    element={<routeItem.component />}
+                  />
+                );
+              })}
             </Routes>
           </main>
         </div>
