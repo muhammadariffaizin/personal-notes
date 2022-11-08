@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const Loading = ({ size }) => {
   return (
     <div role="status">
@@ -22,6 +24,10 @@ const Loading = ({ size }) => {
       <span className="sr-only">Loading...</span>
     </div>
   );
+};
+
+Loading.propTypes = {
+  size: PropTypes.string,
 };
 
 export default Loading;

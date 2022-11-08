@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 const useInput = (defaultValue = "") => {
   const [value, setValue] = useState(defaultValue);
@@ -8,6 +9,10 @@ const useInput = (defaultValue = "") => {
   };
 
   return [value, onValueChangeHandler];
+};
+
+useInput.propTypes = {
+  defaultValue: PropTypes.string,
 };
 
 export default useInput;

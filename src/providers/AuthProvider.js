@@ -4,6 +4,7 @@ import { isAxiosError } from "../api/axios";
 import UserApi from "../api/services/user";
 import Token from "../api/token";
 import AuthContext from "../contexts/auth";
+import PropTypes from "prop-types";
 
 const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState(null);
@@ -34,6 +35,10 @@ const AuthProvider = ({ children }) => {
       {children}
     </AuthContext.Provider>
   );
+};
+
+AuthProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default AuthProvider;
