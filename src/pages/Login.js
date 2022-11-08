@@ -40,8 +40,10 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if (auth) {
-      navigate("/");
+    if (Token.getToken()) {
+      if (auth) {
+        navigate("/");
+      }
     }
   }, [auth]);
 

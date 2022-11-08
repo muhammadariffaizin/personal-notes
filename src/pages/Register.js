@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { isAxiosError } from "../api/axios";
 import AuthApi from "../api/services/auth";
+import Token from "../api/token";
 import Loading from "../components/Loading";
 import useAuth from "../hooks/useAuth";
 import useInput from "../hooks/useInput";
@@ -43,8 +44,10 @@ const Register = () => {
   };
 
   useEffect(() => {
-    if (auth) {
-      navigate("/");
+    if (Token.getToken()) {
+      if (auth) {
+        navigate("/");
+      }
     }
   }, [auth]);
 
