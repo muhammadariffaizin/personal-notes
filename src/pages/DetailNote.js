@@ -68,7 +68,7 @@ const DetailNotePage = () => {
     return (
       <div className="flex flex-col justify-center min-h-screen">
         <h1 className="text-xl text-center text-corn-900 dark:text-gray-100">
-          Note Not Found
+          {localization.noteNotFound}
         </h1>
         <p className="text-center text-8xl text-corn-900 dark:text-gray-100">
           404
@@ -76,7 +76,7 @@ const DetailNotePage = () => {
         <Link to="/">
           <button className="flex justify-center w-full px-3 py-2 mt-3 text-sm rounded-md text-corn-800 dark:text-gray-200 bg-corn-200 dark:bg-gray-800 hover:bg-corn-300 dark:hover:bg-gray-700">
             <BiArrowBack className="mr-1 text-xl" />
-            Back to Home
+            {localization.backHome}
           </button>
         </Link>
       </div>

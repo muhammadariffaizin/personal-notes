@@ -11,6 +11,9 @@ const idLocalization = {
     noteList: {
       notFound: "Tidak ada catatan",
     },
+    loading: {
+      loading: "Memuat...",
+    },
   },
   pages: {
     home: {
@@ -36,6 +39,8 @@ const idLocalization = {
       deleteBtn: "Hapus",
       archiveBtn: "Arsipkan",
       unarchiveBtn: "Batal Arsipkan",
+      noteNotFound: "Catatan tidak ditemukan",
+      backHome: "Kembali ke Beranda",
     },
     login: {
       title: "Hai, Selamat datang kembali",
@@ -81,6 +86,10 @@ const idLocalization = {
       message: {
         confirmSignUpError: "Konfirmasi password tidak cocok!",
       },
+    },
+    notFound: {
+      titlePage: "Halaman tidak ditemukan",
+      backHome: "Kembali ke Beranda",
     },
   },
 };

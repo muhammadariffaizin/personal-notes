@@ -1,6 +1,9 @@
 import PropTypes from "prop-types";
+import useLocalization from "../hooks/useLocalization";
 
 const Loading = ({ size }) => {
+  const localization = useLocalization().components.loading;
+
   return (
     <div role="status">
       <svg
@@ -21,7 +24,7 @@ const Loading = ({ size }) => {
           fill="currentFill"
         />
       </svg>
-      <span className="sr-only">Loading...</span>
+      <span className="sr-only">{localization.loading}</span>
     </div>
   );
 };

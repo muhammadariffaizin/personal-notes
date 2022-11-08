@@ -11,6 +11,9 @@ const enLocalization = {
     noteList: {
       notFound: "Notes not found",
     },
+    loading: {
+      loading: "Loading...",
+    },
   },
   pages: {
     home: {
@@ -36,6 +39,8 @@ const enLocalization = {
       deleteBtn: "Delete",
       archiveBtn: "Archive",
       unarchiveBtn: "Unarchive",
+      noteNotFound: "Note Not Found",
+      backHome: "Back to Home",
     },
     login: {
       title: "Hi, Welcome Back",
@@ -81,6 +86,10 @@ const enLocalization = {
       message: {
         confirmSignUpError: "Password confirmation is not matched!",
       },
+    },
+    notFound: {
+      titlePage: "Page Not Found",
+      backHome: "Back to Home",
     },
   },
 };
