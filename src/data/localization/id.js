@@ -51,8 +51,8 @@ const idLocalization = {
       submitBtn: "Masuk",
       register: {
         text: "Belum memiliki akun?",
-        link: "Daftar Sekarang"
-      }
+        link: "Daftar Sekarang",
+      },
     },
     register: {
       title: "Mari Kita Mulai",
@@ -76,8 +76,11 @@ const idLocalization = {
       submitBtn: "Daftar",
       login: {
         text: "Sudah memiliki akun?",
-        link: "Masuk Sekarang"
-      }
+        link: "Masuk Sekarang",
+      },
+      message: {
+        confirmSignUpError: "Konfirmasi password tidak cocok!",
+      },
     },
   },
 };

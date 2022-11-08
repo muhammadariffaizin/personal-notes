@@ -1,17 +1,42 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { isAxiosError } from "../api/axios";
+import AuthApi from "../api/services/auth";
 import useInput from "../hooks/useInput";
 import useLocalization from "../hooks/useLocalization";
 
 const Register = () => {
+  const [loading, setLoading] = useState(false);
   const localization = useLocalization().pages.register;
+  const navigate = useNavigate();
 
-  const [name, onNameChange] = useInput('');
-  const [email, onEmailChange] = useInput('');
-  const [password, onPasswordChange] = useInput('');
-  const [confirmPassword, onConfirmPasswordChange] = useInput('');
+  const [name, onNameChange] = useInput("");
+  const [email, onEmailChange] = useInput("");
+  const [password, onPasswordChange] = useInput("");
+  const [confirmPassword, onConfirmPasswordChange] = useInput("");
+
+  const signUp = async (newUser) => {
+    setLoading(true);
+    await AuthApi.register(newUser)
+      .then((response) => {
+        navigate("/login");
+        setLoading(false);
+      })
+      .catch((error) => {
+        if (isAxiosError(error)) {
+          navigate("/register");
+        }
+        setLoading(false);
+      });
+  };
 
   const onSubmitEventHandler = (event) => {
     event.preventDefault();
+    if (password === confirmPassword) {
+      signUp({ name, email, password });
+    } else {
+      alert(`${localization.message.confirmSignUpError}`);
+    }
   };
   return (
     <section id="add_note" className="w-full">
@@ -96,10 +121,10 @@ const Register = () => {
               {localization.submitBtn}
             </button>
             <p className="text-corn-900 dark:text-gray-100 text-center">
-                {localization.login.text}{" "}
-                <Link to="/login" className="text-corn-600 dark:text-gray-400">
+              {localization.login.text}{" "}
+              <Link to="/login" className="text-corn-600 dark:text-gray-400">
                 {localization.login.link}
-                </Link>
+              </Link>
             </p>
           </div>
         </form>

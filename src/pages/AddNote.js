@@ -4,23 +4,37 @@ import Input from "../components/Input";
 import TextArea from "../components/TextArea";
 import { BiPlus } from "react-icons/bi";
 import { MdEditNote } from "react-icons/md";
-import { addNote } from "../utils";
 import useLocalization from "../hooks/useLocalization";
 import useInput from "../hooks/useInput";
+import NoteApi from "../api/services/note";
+import { isAxiosError } from "../api/axios";
 
 const AddNotePage = () => {
+  const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState("");
-  const [body, onBodyChange] = useInput('');
-  
+  const [body, onBodyChange] = useInput("");
+
   const localization = useLocalization().pages.addNote;
 
   const navigate = useNavigate();
+  const handleAddNote = async () => {
+    setLoading(true);
+    await NoteApi.createNote({ title: title, body: body })
+      .then((response) => {
+        navigate("/");
+        setLoading(false);
+      })
+      .catch((error) => {
+        if (isAxiosError(error)) {
+          navigate("/login");
+        }
+        setLoading(false);
+      });
+  };
 
   const onSubmitEventHandler = (event) => {
     event.preventDefault();
-    addNote({ title: title, body: body });
-
-    navigate("/");
+    handleAddNote();
   };
 
   return (

@@ -1,18 +1,41 @@
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "../api/axios";
+import Token from "../api/token";
+import { Link, useNavigate } from "react-router-dom";
 import { AiOutlinePlus } from "react-icons/ai";
-import { BiQuestionMark } from "react-icons/bi";
 import { CgNotes } from "react-icons/cg";
 import { MdOutlineArchive } from "react-icons/md";
-import { HiSun, HiMoon } from "react-icons/hi";
+import { HiSun, HiMoon, HiLogout } from "react-icons/hi";
 
 import useLanguage from "../hooks/useLanguage";
 import useLocalization from "../hooks/useLocalization";
 import useColorScheme from "../hooks/useColorScheme";
+import useAuth from "../hooks/useAuth";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const { auth, setAuth } = useAuth();
+  const [isAuth, setIsAuth] = useState(false);
   const { language, toggleLanguage } = useLanguage();
   const { colorScheme, toggleColorScheme } = useColorScheme();
   const localization = useLocalization().components.navbar;
+
+  const handleLogout = () => {
+    Token.removeToken();
+    setAuth(null);
+    axios.defaults.headers.common["Authorization"] = "";
+    navigate("/login");
+  };
+
+  useEffect(() => {
+    if (!Token.getToken()) {
+      setIsAuth(false);
+    } else {
+      if (auth) {
+        setIsAuth(true);
+      }
+    }
+  }, [auth]);
 
   return (
     <header className="bg-corn-100 dark:bg-gray-900">
@@ -26,13 +49,20 @@ const Navbar = () => {
           </div>
           <div className="flex justify-end">
             <Link to="/note/add">
-              <AiOutlinePlus className="m-2 text-2xl text-corn-900 dark:text-gray-100" />
+              <AiOutlinePlus
+                className={
+                  "m-2 text-2xl text-corn-900 dark:text-gray-100 " +
+                  (isAuth ? "" : "hidden")
+                }
+              />
             </Link>
             <Link to="/archives">
-              <MdOutlineArchive className="m-2 text-2xl text-corn-900 dark:text-gray-100" />
-            </Link>
-            <Link to="/">
-              <BiQuestionMark className="m-2 text-2xl text-corn-900 dark:text-gray-100" />
+              <MdOutlineArchive
+                className={
+                  "m-2 text-2xl text-corn-900 dark:text-gray-100 " +
+                  (isAuth ? "" : "hidden")
+                }
+              />
             </Link>
             <button
               onClick={toggleLanguage}
@@ -50,6 +80,15 @@ const Navbar = () => {
               ) : (
                 <HiMoon className="text-lg md:text-2xl" />
               )}
+            </button>
+            <button
+              onClick={handleLogout}
+              className={
+                "m-2 text-corn-900 dark:text-gray-100 " +
+                (isAuth ? "" : "hidden")
+              }
+            >
+              <HiLogout className="text-lg md:text-2xl" />
             </button>
           </div>
         </div>

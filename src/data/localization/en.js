@@ -77,7 +77,10 @@ const enLocalization = {
       login: {
         text: "Already have an account?",
         link: "Login Now"
-      }
+      },
+      message: {
+        confirmSignUpError: "Password confirmation is not matched!",
+      },
     },
   },
 };

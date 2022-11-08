@@ -1,16 +1,43 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { isAxiosError } from "../api/axios";
+import AuthApi from "../api/services/auth";
+import Token from "../api/token";
+import useAuth from "../hooks/useAuth";
 import useInput from "../hooks/useInput";
 import useLocalization from "../hooks/useLocalization";
 
 const Login = () => {
   const localization = useLocalization().pages.login;
+  const [loading, setLoading] = useState(false);
+  const { fetchUser } = useAuth();
+  const navigate = useNavigate();
 
-  const [email, onEmailChange] = useInput('');
-  const [password, onPasswordChange] = useInput('');
+  const [email, onEmailChange] = useInput("");
+  const [password, onPasswordChange] = useInput("");
+  const signIn = async (user) => {
+    setLoading(true);
+    await AuthApi.login(user)
+      .then((response) => {
+        Token.setToken(response.data.accessToken);
+      })
+      .then(async () => {
+        await fetchUser();
+        navigate("/");
+        setLoading(false);
+      })
+      .catch((error) => {
+        if (isAxiosError(error)) {
+        }
+        setLoading(false);
+      });
+  };
 
   const onSubmitEventHandler = (event) => {
     event.preventDefault();
+    signIn({ email, password });
   };
+
   return (
     <section id="add_note" className="w-full">
       <div className="relative flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-gray-800 border rounded-lg border-corn-200 dark:border-gray-800 md:flex-row">
@@ -62,10 +89,10 @@ const Login = () => {
               {localization.submitBtn}
             </button>
             <p className="text-corn-900 dark:text-gray-100 text-center">
-                {localization.register.text}{" "}
-                <Link to="/register" className="text-corn-600 dark:text-gray-400">
+              {localization.register.text}{" "}
+              <Link to="/register" className="text-corn-600 dark:text-gray-400">
                 {localization.register.link}
-                </Link>
+              </Link>
             </p>
           </div>
         </form>
