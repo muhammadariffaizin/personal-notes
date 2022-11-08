@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { isAxiosError } from "../api/axios";
 import AuthApi from "../api/services/auth";
@@ -10,7 +10,7 @@ import useLocalization from "../hooks/useLocalization";
 const Login = () => {
   const localization = useLocalization().pages.login;
   const [loading, setLoading] = useState(false);
-  const { fetchUser } = useAuth();
+  const { auth, fetchUser } = useAuth();
   const navigate = useNavigate();
 
   const [email, onEmailChange] = useInput("");
@@ -38,9 +38,15 @@ const Login = () => {
     signIn({ email, password });
   };
 
+  useEffect(() => {
+    if (auth) {
+      navigate("/");
+    }
+  }, [auth]);
+
   return (
     <section id="add_note" className="w-full">
-      <div className="relative flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-gray-800 border rounded-lg border-corn-200 dark:border-gray-800 md:flex-row">
+      <div className="relative flex flex-col items-center justify-center overflow-hidden bg-white border rounded-lg dark:bg-gray-800 border-corn-200 dark:border-gray-800 md:flex-row">
         <form id="inputNote" onSubmit={onSubmitEventHandler}>
           <div className="flex flex-col justify-between p-8 space-y-2 leading-normal">
             <h2 className="mb-3 text-base font-semibold text-corn-900 dark:text-gray-100 md:text-xl">
@@ -88,7 +94,7 @@ const Login = () => {
             >
               {localization.submitBtn}
             </button>
-            <p className="text-corn-900 dark:text-gray-100 text-center">
+            <p className="text-center text-corn-900 dark:text-gray-100">
               {localization.register.text}{" "}
               <Link to="/register" className="text-corn-600 dark:text-gray-400">
                 {localization.register.link}
