@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { isAxiosError } from "../api/axios";
 import AuthApi from "../api/services/auth";
+import Loading from "../components/Loading";
 import useAuth from "../hooks/useAuth";
 import useInput from "../hooks/useInput";
 import useLocalization from "../hooks/useLocalization";
@@ -127,6 +128,7 @@ const Register = () => {
               type="submit"
               className="w-full text-white dark:text-gray-100 bg-corn-700 dark:bg-gray-700 hover:bg-corn-800 dark:hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-corn-300 dark:focus:ring-gray-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
             >
+              {loading ? <Loading size="small" /> : ""}
               {localization.submitBtn}
             </button>
             <p className="text-center text-corn-900 dark:text-gray-100">

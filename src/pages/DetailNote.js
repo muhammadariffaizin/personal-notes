@@ -6,6 +6,7 @@ import { showFormattedDate } from "../utils";
 import useLocalization from "../hooks/useLocalization";
 import NoteApi from "../api/services/note";
 import { isAxiosError } from "../api/axios";
+import Loading from "../components/Loading";
 
 const DetailNotePage = () => {
   const params = useParams();
@@ -58,7 +59,11 @@ const DetailNotePage = () => {
   };
 
   if (loading) {
-    return <p className="text-corn-900 dark:text-gray-100">loading...</p>;
+    return (
+      <p className="relative p-3 text-center">
+        <Loading />
+      </p>
+    );
   } else if (!note) {
     return (
       <div className="flex flex-col justify-center min-h-screen">
@@ -97,7 +102,7 @@ const DetailNotePage = () => {
       <div className="flex mt-4 space-x-2">
         <button
           onClick={onDeleteEvent}
-          className="flex justify-center px-3 py-2 text-sm text-red-800 dark:text-red-200 rounded-md bg-red-50  dark:bg-red-800 hover:bg-red-100 dark:hover:bg-red-700"
+          className="flex justify-center px-3 py-2 text-sm text-red-800 rounded-md dark:text-red-200 bg-red-50 dark:bg-red-800 hover:bg-red-100 dark:hover:bg-red-700"
         >
           <MdDeleteOutline className="mr-1 text-xl" />
           {localization.deleteBtn}
