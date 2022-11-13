@@ -1,13 +1,13 @@
-import useLanguage from "./useLanguage";
-import idLocalization from "../data/localization/id";
-import enLocalization from "../data/localization/en";
+import useLanguage from './useLanguage';
+import idLocalization from '../data/localization/id';
+import enLocalization from '../data/localization/en';
 
 const useLocalization = () => {
   const { language } = useLanguage();
   switch (language) {
-    case "id":
+    case 'id':
       return idLocalization;
-    case "en":
+    case 'en':
       return enLocalization;
     default:
       return enLocalization;

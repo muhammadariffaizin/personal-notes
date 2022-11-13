@@ -1,7 +1,7 @@
-import { createContext } from "react";
+import { createContext } from 'react';
 
 const ColorSchemeContext = createContext({
-  colorScheme: "light",
+  colorScheme: 'light',
   setColorScheme: () => {},
 });
 

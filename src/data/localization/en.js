@@ -1,95 +1,95 @@
 const enLocalization = {
   components: {
     navbar: {
-      appName: "Personal Notes",
+      appName: 'Personal Notes',
     },
     noteSearch: {
-      title: "Filter Notes",
-      description: "Insert keyword of title notes that you find here",
-      placeholder: "Find here",
+      title: 'Filter Notes',
+      description: 'Insert keyword of title notes that you find here',
+      placeholder: 'Find here',
     },
     noteList: {
-      notFound: "Notes not found",
+      notFound: 'Notes not found',
     },
     loading: {
-      loading: "Loading...",
+      loading: 'Loading...',
     },
   },
   pages: {
     home: {
-      activeNote: "Active Notes",
+      activeNote: 'Active Notes',
     },
     archivedNote: {
-      title: "Archive Notes",
+      title: 'Archive Notes',
     },
     addNote: {
-      title: "Create Notes",
-      description: "Add your note here, fill in all the fields",
+      title: 'Create Notes',
+      description: 'Add your note here, fill in all the fields',
       inputTitle: {
-        title: "Title",
-        placeholder: "Insert title of notes here",
+        title: 'Title',
+        placeholder: 'Insert title of notes here',
       },
       inputContent: {
-        title: "Content",
-        placeholder: "Insert content of title here",
+        title: 'Content',
+        placeholder: 'Insert content of title here',
       },
-      submitBtn: "Add Note",
+      submitBtn: 'Add Note',
     },
     detailNote: {
-      deleteBtn: "Delete",
-      archiveBtn: "Archive",
-      unarchiveBtn: "Unarchive",
-      noteNotFound: "Note Not Found",
-      backHome: "Back to Home",
+      deleteBtn: 'Delete',
+      archiveBtn: 'Archive',
+      unarchiveBtn: 'Unarchive',
+      noteNotFound: 'Note Not Found',
+      backHome: 'Back to Home',
     },
     login: {
-      title: "Hi, Welcome Back",
-      description: "Nice to meet you again. Lets login to continue",
+      title: 'Hi, Welcome Back',
+      description: 'Nice to meet you again. Lets login to continue',
       emailInput: {
-        title: "Email",
-        placeholder: "Enter your email here",
+        title: 'Email',
+        placeholder: 'Enter your email here',
       },
       passwordInput: {
-        title: "Password",
-        placeholder: "Enter your password here",
+        title: 'Password',
+        placeholder: 'Enter your password here',
       },
-      submitBtn: "Login",
+      submitBtn: 'Login',
       register: {
         text: "Don't have an account?",
-        link: "Register Now"
-      }
+        link: 'Register Now',
+      },
     },
     register: {
-      title: "Lets Get Started",
-      description: "Register now and enjoy write your notes",
+      title: 'Lets Get Started',
+      description: 'Register now and enjoy write your notes',
       nameInput: {
-        title: "Name",
-        placeholder: "Enter your name here",
+        title: 'Name',
+        placeholder: 'Enter your name here',
       },
       emailInput: {
-        title: "Email",
-        placeholder: "Enter your email here",
+        title: 'Email',
+        placeholder: 'Enter your email here',
       },
       passwordInput: {
-        title: "Password",
-        placeholder: "Enter your password here",
+        title: 'Password',
+        placeholder: 'Enter your password here',
       },
       confirmPasswordInput: {
-        title: "Confirm Password",
-        placeholder: "Enter your password confirmation here",
+        title: 'Confirm Password',
+        placeholder: 'Enter your password confirmation here',
       },
-      submitBtn: "Register",
+      submitBtn: 'Register',
       login: {
-        text: "Already have an account?",
-        link: "Login Now"
+        text: 'Already have an account?',
+        link: 'Login Now',
       },
       message: {
-        confirmSignUpError: "Password confirmation is not matched!",
+        confirmSignUpError: 'Password confirmation is not matched!',
       },
     },
     notFound: {
-      titlePage: "Page Not Found",
-      backHome: "Back to Home",
+      titlePage: 'Page Not Found',
+      backHome: 'Back to Home',
     },
   },
 };

@@ -1,7 +1,7 @@
-import axios, { AxiosError } from "axios";
+import axios, { AxiosError } from 'axios';
 
 export default axios.create({
-  baseURL: "https://notes-api.dicoding.dev/v1",
+  baseURL: 'https://notes-api.dicoding.dev/v1',
 });
 
 export const isAxiosError = (error) => {

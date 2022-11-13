@@ -1,7 +1,7 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 const classNames = (...classes) => {
-  return classes.filter(Boolean).join(" ");
+  return classes.filter(Boolean).join(' ');
 };
 
 classNames.propTypes = {

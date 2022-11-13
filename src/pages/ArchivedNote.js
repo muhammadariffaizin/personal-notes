@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
-import { isAxiosError } from "../api/axios";
-import NoteApi from "../api/services/note";
-import Loading from "../components/Loading";
-import NoteList from "../components/NoteList";
-import NoteSearch from "../components/NoteSearch";
-import useLocalization from "../hooks/useLocalization";
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { isAxiosError } from '../api/axios';
+import NoteApi from '../api/services/note';
+import Loading from '../components/Loading';
+import NoteList from '../components/NoteList';
+import NoteSearch from '../components/NoteSearch';
+import useLocalization from '../hooks/useLocalization';
 
 const ArchivedNotePage = () => {
   const [notes, setNotes] = useState([]);
@@ -15,7 +15,7 @@ const ArchivedNotePage = () => {
   const localization = useLocalization().pages.archivedNote;
   const navigate = useNavigate();
 
-  const title = searchParams.get("title") || "";
+  const title = searchParams.get('title') || '';
 
   const setSearchParamsHandler = (title) => {
     setSearchParams({ title: title });
@@ -33,7 +33,7 @@ const ArchivedNotePage = () => {
       })
       .catch((error) => {
         if (isAxiosError(error)) {
-          navigate("/login");
+          navigate('/login');
         }
         setLoading(false);
       });
@@ -51,27 +51,27 @@ const ArchivedNotePage = () => {
       } else {
         setNotes(
           tempData.filter((note) =>
-            note.title.toLowerCase().includes(title.toLowerCase())
-          )
+            note.title.toLowerCase().includes(title.toLowerCase()),
+          ),
         );
       }
     }
   }, [title]);
 
   return (
-    <div className="justify-center w-full space-y-2">
+    <div className='justify-center w-full space-y-2'>
       <NoteSearch
         title={title}
         setSearchParamsHandler={setSearchParamsHandler}
       />
       {loading ? (
-        <p className="relative p-3 text-center">
+        <p className='relative p-3 text-center'>
           <Loading />
         </p>
       ) : (
-        <div className="relative flex flex-col items-center justify-center">
-          <div className="w-full p-3 m-2 overflow-hidden bg-white border rounded-lg dark:bg-gray-800 sm:p-4 border-corn-200 dark:border-gray-800">
-            <h2 className="text-base font-semibold text-corn-900 dark:text-gray-100 md:text-xl">
+        <div className='relative flex flex-col items-center justify-center'>
+          <div className='w-full p-3 m-2 overflow-hidden bg-white border rounded-lg dark:bg-gray-800 sm:p-4 border-corn-200 dark:border-gray-800'>
+            <h2 className='text-base font-semibold text-corn-900 dark:text-gray-100 md:text-xl'>
               {localization.title}
             </h2>
           </div>

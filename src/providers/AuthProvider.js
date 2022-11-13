@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { isAxiosError } from "../api/axios";
-import UserApi from "../api/services/user";
-import Token from "../api/token";
-import AuthContext from "../contexts/auth";
-import PropTypes from "prop-types";
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { isAxiosError } from '../api/axios';
+import UserApi from '../api/services/user';
+import Token from '../api/token';
+import AuthContext from '../contexts/auth';
+import PropTypes from 'prop-types';
 
 const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState(null);
@@ -12,7 +12,7 @@ const AuthProvider = ({ children }) => {
 
   const fetchUser = async () => {
     if (!Token.getToken()) {
-      navigate("/login");
+      navigate('/login');
     }
 
     await UserApi.getAuthenticatedUser()
@@ -21,7 +21,7 @@ const AuthProvider = ({ children }) => {
       })
       .catch((error) => {
         if (isAxiosError(error)) {
-          navigate("/login");
+          navigate('/login');
         }
       });
   };

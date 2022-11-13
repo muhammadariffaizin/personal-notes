@@ -1,24 +1,24 @@
-import axios from "../axios";
-import Token from "../token";
+import axios from '../axios';
+import Token from '../token';
 
 class NoteApi {
   static async withHeader() {
     axios.defaults.headers.common[
-      "Authorization"
+      'Authorization'
     ] = `Bearer ${Token.getToken()}`;
   }
 
   static async getActiveNotes() {
     this.withHeader();
     return await axios
-      .get("/notes")
+      .get('/notes')
       .then((response) => Promise.resolve(response.data))
       .catch((error) => Promise.reject(error));
   }
 
   static async getArchivedNotes() {
     this.withHeader();
-    const response = await axios.get("/notes/archived");
+    const response = await axios.get('/notes/archived');
     return response.data;
   }
 
@@ -30,7 +30,7 @@ class NoteApi {
 
   static async createNote({ title, body }) {
     this.withHeader();
-    const response = await axios.post("/notes", { title, body });
+    const response = await axios.post('/notes', { title, body });
     return response.data;
   }
 

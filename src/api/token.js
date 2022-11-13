@@ -1,12 +1,12 @@
 class Token {
   static getToken() {
-    return localStorage.getItem("accessToken");
+    return localStorage.getItem('accessToken');
   }
   static setToken(accessToken) {
-    localStorage.setItem("accessToken", accessToken);
+    localStorage.setItem('accessToken', accessToken);
   }
   static removeToken() {
-    localStorage.removeItem("accessToken");
+    localStorage.removeItem('accessToken');
   }
 }
 export default Token;

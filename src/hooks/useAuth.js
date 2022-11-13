@@ -1,8 +1,8 @@
-import AuthContext from "../contexts/auth";
-import { useContext, useEffect } from "react";
-import UserApi from "../api/services/user";
-import { isAxiosError } from "../api/axios";
-import { useNavigate } from "react-router-dom";
+import AuthContext from '../contexts/auth';
+import { useContext, useEffect } from 'react';
+import UserApi from '../api/services/user';
+import { isAxiosError } from '../api/axios';
+import { useNavigate } from 'react-router-dom';
 
 const useAuth = () => {
   const { auth, setAuth } = useContext(AuthContext);
@@ -15,15 +15,15 @@ const useAuth = () => {
       })
       .catch((error) => {
         if (isAxiosError(error)) {
-          navigate("/login");
+          navigate('/login');
         }
       });
   };
 
   useEffect(() => {
     fetchUser();
-  }, [auth])
-  
+  }, [auth]);
+
   return { auth, setAuth, fetchUser };
 };
 
